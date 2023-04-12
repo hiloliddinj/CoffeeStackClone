@@ -13,6 +13,7 @@ public class EventManager : MonoBehaviour
     public event Action OnCupAdded;
     public event Action OnCupCoffeeAdded;
     public event Action OnCupHatAdded;
+    public event Action OnCupSleeveAdded;
 
     public event Action<int> OnLooseCup;
 
@@ -52,6 +53,11 @@ public class EventManager : MonoBehaviour
     public void OnCupHatAddedTrigger()
     {
         OnCupHatAdded?.Invoke();
+    }
+
+    public void OnCupSleeveAddedTrigger()
+    {
+        OnCupSleeveAdded?.Invoke();
     }
 
     public void OnLooseCupTrigger(int amount)

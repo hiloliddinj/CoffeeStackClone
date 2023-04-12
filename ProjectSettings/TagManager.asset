@@ -9,6 +9,8 @@ TagManager:
   - moving_cup
   - four_piramid
   - moving_green
+  - sleeve
+  - finish_line
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         EventManager.current.OnCupAdded += AddCup;
         EventManager.current.OnCupCoffeeAdded += OnCupCoffeeAdded;
         EventManager.current.OnCupHatAdded += OnCupHatAdded;
+        EventManager.current.OnCupSleeveAdded += OnCupSleeveAdded;
         EventManager.current.OnLooseCup += OnLooseCup;
         
     }
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
         EventManager.current.OnCupAdded -= AddCup;
         EventManager.current.OnCupCoffeeAdded -= OnCupCoffeeAdded;
         EventManager.current.OnCupHatAdded += OnCupHatAdded;
+        EventManager.current.OnCupSleeveAdded -= OnCupSleeveAdded;
         EventManager.current.OnLooseCup -= OnLooseCup;
     }
 
@@ -74,6 +76,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnCupHatAdded()
+    {
+        UpdateHandScore(1);
+    }
+
+    private void OnCupSleeveAdded()
     {
         UpdateHandScore(1);
     }

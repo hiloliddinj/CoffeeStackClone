@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165602131039802935}
+  - component: {fileID: 6144038966447515119}
   - component: {fileID: 8164587417881002582}
   - component: {fileID: 905165622200836544}
-  - component: {fileID: 6144038966447515119}
   m_Layer: 0
   m_Name: CupMother
   m_TagString: moving_cup
@@ -36,6 +36,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6144038966447515119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165602131039802934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240dcf0673cba4312845d45212f0916b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _order: 1
+  _isHandCup: 0
+  _dieParticle: {fileID: 2744883436804259354}
+  _coffeeLiquide: {fileID: 1165602129747001900}
+  _cupHat: {fileID: 1253328849218081306}
+  _cupSleeve: {fileID: 5958336537029766808}
+  _hasHat: 0
+  _hasCoffee: 0
 --- !u!136 &8164587417881002582
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -66,23 +86,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
---- !u!114 &6144038966447515119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165602131039802934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 240dcf0673cba4312845d45212f0916b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _order: 1
-  _isHandCup: 0
-  _dieParticle: {fileID: 2744883436804259354}
-  _coffeeLiquide: {fileID: 1165602129747001900}
-  _cupHat: {fileID: 1253328849218081306}
 --- !u!1 &3879044932118649264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4958,6 +4961,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4800080142289342265, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800080142289342265, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+      propertyPath: m_VersionIndex
+      value: 6718
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800080142289342268, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800080142289342269, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5174331618222964845, guid: e0309a2ea93334675892349fb1de7277, type: 3}
       propertyPath: m_Height
       value: 0.46986613
@@ -4993,5 +5012,10 @@ GameObject:
 --- !u!4 &2940514014912732765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4099332415474745339, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+  m_PrefabInstance: {fileID: 1165602129720893862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5958336537029766808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4800080142289342270, guid: e0309a2ea93334675892349fb1de7277, type: 3}
   m_PrefabInstance: {fileID: 1165602129720893862}
   m_PrefabAsset: {fileID: 0}

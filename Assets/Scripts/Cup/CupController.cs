@@ -11,8 +11,12 @@ public class CupController : MonoBehaviour
     [SerializeField] private ParticleSystem _dieParticle;
     [SerializeField] private GameObject _coffeeLiquide;
     [SerializeField] private GameObject _cupHat;
-    public bool _hasHat = false;
-    public bool _hasCoffee = false;
+    [SerializeField] private GameObject _cupSleeve;
+
+    private bool _hasHat = false;
+    private bool _hasCoffee = false;
+    private bool _hasSleeve = false;
+    
 
     private float _moveDelayDuration = 0.02f;
 
@@ -67,6 +71,7 @@ public class CupController : MonoBehaviour
             int amount = 1;
             if (_hasCoffee) amount++;
             if (_hasHat) amount++;
+            if (_hasSleeve) amount++;
             EventManager.current.OnLooseCupTrigger(amount);
 
             SwitchCup(gameObject, false);
@@ -77,6 +82,11 @@ public class CupController : MonoBehaviour
             _hasHat = true;
             _cupHat.SetActive(true);
             EventManager.current.OnCupHatAddedTrigger();
+
+        } else if (other.CompareTag(TagConst.sleeve))
+        {
+            _cupSleeve.SetActive(true);
+            EventManager.current.OnCupSleeveAddedTrigger();
         }
     }
     #endregion

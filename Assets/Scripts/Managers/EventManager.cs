@@ -17,6 +17,8 @@ public class EventManager : MonoBehaviour
 
     public event Action<int> OnLooseCup;
 
+    public event Action OnPassedFinishLine;
+
 
     private void Awake()
     {
@@ -63,6 +65,11 @@ public class EventManager : MonoBehaviour
     public void OnLooseCupTrigger(int amount)
     {
         OnLooseCup?.Invoke(amount);
+    }
+
+    public void OnPassedFinishLineTrigger()
+    {
+        OnPassedFinishLine?.Invoke();
     }
 
 

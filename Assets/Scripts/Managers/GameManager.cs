@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     private int _currentGameMoney = 1;
 
+    public static bool passedFinishLine = false;
+
     void Start()
     {
         _scoreOnHand.text = _currentGameMoney.ToString();
@@ -19,7 +21,9 @@ public class GameManager : MonoBehaviour
         EventManager.current.OnCupHatAdded += OnCupHatAdded;
         EventManager.current.OnCupSleeveAdded += OnCupSleeveAdded;
         EventManager.current.OnLooseCup += OnLooseCup;
-        
+        EventManager.current.OnPassedFinishLine += OnPassedFinishLine;
+
+
     }
 
     private void OnDisable()
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
         EventManager.current.OnCupHatAdded += OnCupHatAdded;
         EventManager.current.OnCupSleeveAdded -= OnCupSleeveAdded;
         EventManager.current.OnLooseCup -= OnLooseCup;
+        EventManager.current.OnPassedFinishLine -= OnPassedFinishLine;
     }
 
     void Update()
@@ -95,5 +100,10 @@ public class GameManager : MonoBehaviour
     private void OnLooseCup(int amount)
     {
         UpdateHandScore(-amount);
+    }
+
+    private void OnPassedFinishLine()
+    {
+        passedFinishLine = true;
     }
 }

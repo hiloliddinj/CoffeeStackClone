@@ -6,4 +6,5 @@ public class TagConst
     public static string fourPiramid = "four_piramid";
     public static string movingGreen = "moving_green";
     public static string sleeve = "sleeve";
+    public static string finishLine = "finish_line";
 }

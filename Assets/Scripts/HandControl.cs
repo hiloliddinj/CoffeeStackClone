@@ -42,7 +42,7 @@ public class HandControl : MonoBehaviour
             }
                 
             //LEFT
-            if (Input.GetAxis(InputConst.mouseX) < 0 && transform.position.x > -0.85f)
+            if (Input.GetAxis(InputConst.mouseX) < 0 && transform.position.x > -0.85f && !GameManager.passedFinishLine)
             {
                 EventManager.current.OnGoLeftTrigger();
                 transform.position = Vector3.Lerp(
@@ -55,7 +55,7 @@ public class HandControl : MonoBehaviour
                 //transform.Translate(horizontalSpeedModifier * Time.deltaTime * Vector3.left, Space.World);
             }
             //RIGHT
-            if (Input.GetAxis(InputConst.mouseX) > 0 && transform.position.x < 0.78f)
+            if (Input.GetAxis(InputConst.mouseX) > 0 && transform.position.x < 0.78f && !GameManager.passedFinishLine)
             {
                 EventManager.current.OnGoRightTrigger();
                 transform.position = Vector3.Lerp(

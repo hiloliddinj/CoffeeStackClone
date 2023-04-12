@@ -87,6 +87,13 @@ public class CupController : MonoBehaviour
         {
             _cupSleeve.SetActive(true);
             EventManager.current.OnCupSleeveAddedTrigger();
+
+        } else if (other.CompareTag(TagConst.finishLine))
+        {
+            if (!GameManager.passedFinishLine)
+            {
+                EventManager.current.OnPassedFinishLineTrigger();
+            }
         }
     }
     #endregion

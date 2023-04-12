@@ -11,8 +11,8 @@ public class CupController : MonoBehaviour
     [SerializeField] private ParticleSystem _dieParticle;
     [SerializeField] private GameObject _coffeeLiquide;
     [SerializeField] private GameObject _cupHat;
-    private bool _hasHat = false;
-    private bool _hasCoffee = false;
+    public bool _hasHat = false;
+    public bool _hasCoffee = false;
 
     private float _moveDelayDuration = 0.02f;
 
@@ -130,9 +130,15 @@ public class CupController : MonoBehaviour
     private void SwitchCup(GameObject cup, bool isActive)
     {
         cup.GetComponent<CapsuleCollider>().enabled = isActive;
+        
         _coffeeLiquide.SetActive(false);
         _cupHat.SetActive(false);
         _hasCoffee = false;
         _hasHat = false;
+
+        GameObject animeLevelObject = cup.transform.GetChild(0).gameObject;
+        GameObject cubObject = animeLevelObject.transform.GetChild(0).gameObject;
+
+        cubObject.GetComponent<MeshRenderer>().enabled = isActive;
     }
 }

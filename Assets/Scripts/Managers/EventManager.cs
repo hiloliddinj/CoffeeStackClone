@@ -9,6 +9,8 @@ public class EventManager : MonoBehaviour
     public event Action OnGameStart;
     public event Action OnGoLeft;
     public event Action OnGoRight;
+
+    public event Action OnCupAdded;
     
 
     private void Awake()
@@ -31,6 +33,11 @@ public class EventManager : MonoBehaviour
 
     public void OnGoRightTrigger() {
         OnGoRight?.Invoke();
+    }
+
+    public void OnCupAddedTrigger()
+    {
+        OnCupAdded?.Invoke();
     }
 
     

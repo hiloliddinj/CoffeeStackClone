@@ -11,11 +11,19 @@ public class CupController : MonoBehaviour
 
     private bool _startMoveForward = false;
 
+    private Animator _animator;
+
+    #region MonoBehaviour
     private void Start()
     {
+
         EventManager.current.OnGameStart += StartMoving;
         EventManager.current.OnGoLeft += InvokeMoveCupLeft;
         EventManager.current.OnGoRight += InvokeMoveCupRight;
+
+        _animator = GetComponent<Animator>();
+        if (_isHandCup)
+        _animator.SetTrigger(AnimeConst.startCap);
     }
 
     private void OnDisable()
@@ -32,6 +40,16 @@ public class CupController : MonoBehaviour
             transform.Translate(HandControl.frontSpeedModifier * Time.deltaTime * Vector3.forward, Space.World);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(TagConst.collectableCup))
+        {
+            other.gameObject.SetActive(false);
+            EventManager.current.OnCupAddedTrigger();
+        }
+    }
+    #endregion
 
     private void StartMoving()
     {

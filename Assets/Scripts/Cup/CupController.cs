@@ -94,6 +94,10 @@ public class CupController : MonoBehaviour
             {
                 EventManager.current.OnPassedFinishLineTrigger();
             }
+
+        } else if (other.CompareTag(TagConst.disableCups))
+        {
+            gameObject.SetActive(false);
         }
     }
     #endregion

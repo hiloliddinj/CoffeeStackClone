@@ -17,6 +17,14 @@ public class HandControl : MonoBehaviour
         CapControl();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(TagConst.moveUp))
+        {
+            _didCameToEnd = true;
+        }
+    }
+
     private void CapControl()
     {
         //Touch Control

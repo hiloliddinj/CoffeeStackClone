@@ -11,6 +11,8 @@ TagManager:
   - moving_green
   - sleeve
   - finish_line
+  - disable_cups
+  - move_up
   layers:
   - Default
   - TransparentFX

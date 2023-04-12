@@ -7,4 +7,6 @@ public class TagConst
     public static string movingGreen = "moving_green";
     public static string sleeve = "sleeve";
     public static string finishLine = "finish_line";
+    public static string disableCups = "disable_cups";
+    public static string moveUp = "move_up";
 }

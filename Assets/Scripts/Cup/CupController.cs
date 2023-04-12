@@ -64,9 +64,13 @@ public class CupController : MonoBehaviour
 
         } else if (other.CompareTag(TagConst.fourPiramid))
         {
+            int amount = 1;
+            if (_hasCoffee) amount++;
+            if (_hasHat) amount++;
+            EventManager.current.OnLooseCupTrigger(amount);
+
             SwitchCup(gameObject, false);
-            _dieParticle.Play();
-            //TODO: Event to update score
+            _dieParticle.Play();            
         }
     }
     #endregion
@@ -122,5 +126,7 @@ public class CupController : MonoBehaviour
         cup.GetComponent<CapsuleCollider>().enabled = isActive;
         _coffeeLiquide.SetActive(false);
         _cupHat.SetActive(false);
+        _hasCoffee = false;
+        _hasHat = false;
     }
 }

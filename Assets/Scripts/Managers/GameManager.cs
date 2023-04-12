@@ -15,12 +15,15 @@ public class GameManager : MonoBehaviour
         _scoreOnHand.text = _currentGameMoney.ToString();
         EventManager.current.OnCupAdded += AddCup;
         EventManager.current.OnCupCoffeeAdded += OnCupCoffeeAdded;
+        EventManager.current.OnLooseCup += OnLooseCup;
+        
     }
 
     private void OnDisable()
     {
         EventManager.current.OnCupAdded -= AddCup;
         EventManager.current.OnCupCoffeeAdded -= OnCupCoffeeAdded;
+        EventManager.current.OnLooseCup -= OnLooseCup;
     }
 
     void Update()
@@ -72,5 +75,10 @@ public class GameManager : MonoBehaviour
         _currentGameMoney += amount;
         Debug.Log("CurrentMoney: " + _currentGameMoney);
         _scoreOnHand.text = _currentGameMoney.ToString();
+    }
+
+    private void OnLooseCup(int amount)
+    {
+        UpdateHandScore(-amount);
     }
 }

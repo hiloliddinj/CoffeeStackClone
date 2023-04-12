@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class HandControl : MonoBehaviour
 {
-    private float _frontSpeedModifier = 1.5f;
-    [SerializeField] private float _horizontalSpeedModifier;
+    public static float horizontalSpeedModifier = 0.1f;
+    public static float frontSpeedModifier = 1.5f;
+    public static float t = 0.1f;
 
     private Touch _touch;
  
     private bool _didCameToEnd = false;
+    private bool _gameStarted = false;
 
     private void Update()
     {
@@ -18,42 +20,53 @@ public class HandControl : MonoBehaviour
     private void CapControl()
     {
         //Touch Control
-        if (Input.touchCount > 0)
-        {
-            _touch = Input.GetTouch(0);
+        //if (Input.touchCount > 0)
+        //{
+        //    _touch = Input.GetTouch(0);
 
-            if (_touch.phase == TouchPhase.Moved && (transform.position.x > -0.75f && transform.position.x < 0.75f))
-            {
-                transform.position = new Vector3(
-                    transform.position.x + _touch.deltaPosition.x * _horizontalSpeedModifier,
-                    transform.position.y,
-                    transform.position.z);
-            }
-        }
+        //    if (_touch.phase == TouchPhase.Moved && (transform.position.x > -0.75f && transform.position.x < 0.75f))
+        //    {
+        //        transform.position = new Vector3(
+        //            transform.position.x + _touch.deltaPosition.x * horizontalSpeedModifier,
+        //            transform.position.y,
+        //            transform.position.z);
+        //    }
+        //}
 
         //Mouse Control
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
+        if (Input.GetKey(KeyCode.Mouse0)) {
+
+            if (!_gameStarted) {
+                EventManager.current.OnGameStartTrigger();
+                _gameStarted = true;
+            }
+                
+            //LEFT
             if (Input.GetAxis(InputConst.mouseX) < 0 && transform.position.x > -0.85f)
             {
+                EventManager.current.OnGoLeftTrigger();
                 transform.position = Vector3.Lerp(
                     transform.position,
                     new Vector3(
-                        transform.position.x - _horizontalSpeedModifier,
+                        transform.position.x - horizontalSpeedModifier,
                         transform.position.y,
                         transform.position.z),
-                    .3f);
+                    t);
+                //transform.Translate(horizontalSpeedModifier * Time.deltaTime * Vector3.left, Space.World);
             }
-
+            //RIGHT
             if (Input.GetAxis(InputConst.mouseX) > 0 && transform.position.x < 0.78f)
             {
+                EventManager.current.OnGoRightTrigger();
                 transform.position = Vector3.Lerp(
                     transform.position,
                     new Vector3(
-                        transform.position.x + _horizontalSpeedModifier,
+                        transform.position.x + horizontalSpeedModifier,
                         transform.position.y,
                         transform.position.z),
-                    .3f);
+                    t);
+
+                //transform.Translate(horizontalSpeedModifier * Time.deltaTime * Vector3.right, Space.World);
             }
 
         }
@@ -61,7 +74,7 @@ public class HandControl : MonoBehaviour
 
     private void MoveForward()
     {
-        if (!_didCameToEnd)
-            transform.Translate(_frontSpeedModifier * Time.deltaTime * Vector3.forward);
+        if (!_didCameToEnd && _gameStarted)
+            transform.Translate(frontSpeedModifier * Time.deltaTime * Vector3.forward, Space.World);
     }
 }

@@ -5,8 +5,11 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager current;
 
-    public event Action ExampleEvent;
-    public event Action<int> OpenDoorEvent;
+
+    public event Action OnGameStart;
+    public event Action OnGoLeft;
+    public event Action OnGoRight;
+    
 
     private void Awake()
     {
@@ -18,14 +21,18 @@ public class EventManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void OpenDoorEventTrigger(int id)
-    {
-        OpenDoorEvent?.Invoke(id);
+    public void OnGameStartTrigger() {
+        OnGameStart?.Invoke();
     }
 
-    public void ExampleEventTrigger()
-    {
-        ExampleEvent?.Invoke();
+    public void OnGoLeftTrigger() {
+        OnGoLeft?.Invoke();
     }
+
+    public void OnGoRightTrigger() {
+        OnGoRight?.Invoke();
+    }
+
+    
 
 }

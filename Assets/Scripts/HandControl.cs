@@ -22,6 +22,7 @@ public class HandControl : MonoBehaviour
         if (other.CompareTag(TagConst.moveUp))
         {
             _didCameToEnd = true;
+            EventManager.current.OnLevelFinishedtrigger();
         }
     }
 

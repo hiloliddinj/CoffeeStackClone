@@ -18,6 +18,7 @@ public class EventManager : MonoBehaviour
     public event Action<int> OnLooseCup;
 
     public event Action OnPassedFinishLine;
+    public event Action OnLevelFinished;
 
 
     private void Awake()
@@ -70,6 +71,11 @@ public class EventManager : MonoBehaviour
     public void OnPassedFinishLineTrigger()
     {
         OnPassedFinishLine?.Invoke();
+    }
+
+    public void OnLevelFinishedtrigger()
+    {
+        OnLevelFinished?.Invoke();
     }
 
 

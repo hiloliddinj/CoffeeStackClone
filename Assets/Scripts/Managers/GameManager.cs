@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> _cupsInRaw;
     [SerializeField] private TextMeshProUGUI _scoreOnHand;
 
+    [SerializeField] private TextMeshProUGUI _finalScore;
+
     private int _currentGameMoney = 1;
 
     public static bool passedFinishLine = false;
@@ -22,8 +24,7 @@ public class GameManager : MonoBehaviour
         EventManager.current.OnCupSleeveAdded += OnCupSleeveAdded;
         EventManager.current.OnLooseCup += OnLooseCup;
         EventManager.current.OnPassedFinishLine += OnPassedFinishLine;
-
-
+        EventManager.current.OnLevelFinished += OnLevelFinished;
     }
 
     private void OnDisable()
@@ -34,11 +35,7 @@ public class GameManager : MonoBehaviour
         EventManager.current.OnCupSleeveAdded -= OnCupSleeveAdded;
         EventManager.current.OnLooseCup -= OnLooseCup;
         EventManager.current.OnPassedFinishLine -= OnPassedFinishLine;
-    }
-
-    void Update()
-    {
-        
+        EventManager.current.OnLevelFinished -= OnLevelFinished;
     }
 
     private void AddCup()
@@ -105,5 +102,10 @@ public class GameManager : MonoBehaviour
     private void OnPassedFinishLine()
     {
         passedFinishLine = true;
+    }
+
+    private void OnLevelFinished()
+    {
+        _finalScore.text = _currentGameMoney.ToString() + "$";
     }
 }

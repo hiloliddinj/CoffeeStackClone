@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _scoreOnHand.text = _currentGameMoney.ToString();
+
         EventManager.current.OnCupAdded += AddCup;
         EventManager.current.OnCupCoffeeAdded += OnCupCoffeeAdded;
+        EventManager.current.OnCupHatAdded += OnCupHatAdded;
         EventManager.current.OnLooseCup += OnLooseCup;
         
     }
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         EventManager.current.OnCupAdded -= AddCup;
         EventManager.current.OnCupCoffeeAdded -= OnCupCoffeeAdded;
+        EventManager.current.OnCupHatAdded += OnCupHatAdded;
         EventManager.current.OnLooseCup -= OnLooseCup;
     }
 
@@ -66,6 +69,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnCupCoffeeAdded()
+    {
+        UpdateHandScore(1);
+    }
+
+    private void OnCupHatAdded()
     {
         UpdateHandScore(1);
     }

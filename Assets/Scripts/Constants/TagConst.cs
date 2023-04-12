@@ -4,4 +4,5 @@ public class TagConst
     public static string movingCup = "moving_cup";
     public static string espresso = "espresso";
     public static string fourPiramid = "four_piramid";
+    public static string movingGreen = "moving_green";
 }

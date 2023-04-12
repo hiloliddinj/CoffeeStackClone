@@ -70,7 +70,13 @@ public class CupController : MonoBehaviour
             EventManager.current.OnLooseCupTrigger(amount);
 
             SwitchCup(gameObject, false);
-            _dieParticle.Play();            
+            _dieParticle.Play();
+            
+        } else if (other.CompareTag(TagConst.movingGreen))
+        {
+            _hasHat = true;
+            _cupHat.SetActive(true);
+            EventManager.current.OnCupHatAddedTrigger();
         }
     }
     #endregion

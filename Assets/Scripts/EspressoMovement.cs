@@ -7,6 +7,7 @@ public class EspressoMovement : MonoBehaviour
     [SerializeField] private float xRight, xLeft;
 
     private int _xDirection = 1;
+    private float _speed = 1.3f;
 
     private void Update()
     {
@@ -26,7 +27,7 @@ public class EspressoMovement : MonoBehaviour
         transform.position = Vector3.Lerp(
                 transform.position,
                 new Vector3(
-                    transform.position.x + 0.003f * _xDirection,
+                    transform.position.x + _speed * _xDirection * Time.deltaTime,
                     transform.position.y,
                     transform.position.z),
                 0.3f);

@@ -8,6 +8,7 @@ TagManager:
   - espresso
   - moving_cup
   - four_piramid
+  - moving_green
   layers:
   - Default
   - TransparentFX

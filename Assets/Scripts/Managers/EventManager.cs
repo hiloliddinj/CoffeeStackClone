@@ -11,7 +11,8 @@ public class EventManager : MonoBehaviour
     public event Action OnGoRight;
 
     public event Action OnCupAdded;
-    
+    public event Action OnCupCoffeeAdded;
+
 
     private void Awake()
     {
@@ -40,6 +41,12 @@ public class EventManager : MonoBehaviour
         OnCupAdded?.Invoke();
     }
 
-    
+    public void OnCupCoffeeAddedTrigger()
+    {
+        OnCupCoffeeAdded?.Invoke();
+    }
+
+
+
 
 }

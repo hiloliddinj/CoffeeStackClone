@@ -7,6 +7,10 @@ public class CupController : MonoBehaviour
 {
     [SerializeField] private float _order;
     [SerializeField] private bool _isHandCup = false;
+
+    [SerializeField] private GameObject _coffeeLiquide;
+    [SerializeField] private GameObject _cupHat;
+
     private float _moveDelayDuration = 0.02f;
 
     private bool _startMoveForward = false;
@@ -47,6 +51,11 @@ public class CupController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             EventManager.current.OnCupAddedTrigger();
+
+        } else if (other.CompareTag(TagConst.espresso))
+        {
+            _coffeeLiquide.SetActive(true);
+            EventManager.current.OnCupCoffeeAddedTrigger();
         }
     }
     #endregion

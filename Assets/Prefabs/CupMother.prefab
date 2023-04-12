@@ -79,6 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _order: 0
   _isHandCup: 0
+  _coffeeLiquide: {fileID: 1165602129747001900}
+  _cupHat: {fileID: 8878387568075348765}
 --- !u!1001 &1165602129720893862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,8 +158,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+--- !u!1 &1165602129747001900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 108110730, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+  m_PrefabInstance: {fileID: 1165602129720893862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2940514014912732765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4099332415474745339, guid: e0309a2ea93334675892349fb1de7277, type: 3}
+  m_PrefabInstance: {fileID: 1165602129720893862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8878387568075348765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7717853104964893371, guid: e0309a2ea93334675892349fb1de7277, type: 3}
   m_PrefabInstance: {fileID: 1165602129720893862}
   m_PrefabAsset: {fileID: 0}

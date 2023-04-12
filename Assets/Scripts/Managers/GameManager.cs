@@ -6,16 +6,18 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _cupsInRaw;
 
-    private int _cupCounter = 1;
+    private int _currentGameMoney = 0;
 
     void Start()
     {
         EventManager.current.OnCupAdded += AddCup;
+        EventManager.current.OnCupCoffeeAdded += OnCupCoffeeAdded;
     }
 
     private void OnDisable()
     {
         EventManager.current.OnCupAdded -= AddCup;
+        EventManager.current.OnCupCoffeeAdded -= OnCupCoffeeAdded;
     }
 
     void Update()
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void AddCup()
     {
+        
         //ActivateCup
         foreach (var cup in _cupsInRaw)
         {
@@ -32,7 +35,8 @@ public class GameManager : MonoBehaviour
             {
                 //EnableView
                 SwitchCup(cup, true);
-              
+                _currentGameMoney++;
+                Debug.Log("CurrentMoney: " + _currentGameMoney);
                 break;
             }                
         }
@@ -54,5 +58,11 @@ public class GameManager : MonoBehaviour
             animator.speed = 3;
             animator.SetTrigger(AnimeConst.startCap);
         }
+    }
+
+    private void OnCupCoffeeAdded()
+    {
+        _currentGameMoney++;
+        Debug.Log("CurrentMoney: " + _currentGameMoney);
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - collectable_cup
   - espresso
+  - moving_cup
+  - four_piramid
   layers:
   - Default
   - TransparentFX

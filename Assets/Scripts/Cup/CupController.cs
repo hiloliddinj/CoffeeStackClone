@@ -8,12 +8,16 @@ public class CupController : MonoBehaviour
     [SerializeField] private float _order;
     [SerializeField] private bool _isHandCup = false;
 
+    [SerializeField] private ParticleSystem _dieParticle;
     [SerializeField] private GameObject _coffeeLiquide;
     [SerializeField] private GameObject _cupHat;
+    private bool _hasHat = false;
+    private bool _hasCoffee = false;
 
     private float _moveDelayDuration = 0.02f;
 
     private bool _startMoveForward = false;
+
 
     private Animator _animator;
 
@@ -54,8 +58,15 @@ public class CupController : MonoBehaviour
 
         } else if (other.CompareTag(TagConst.espresso))
         {
+            _hasCoffee = true;
             _coffeeLiquide.SetActive(true);
             EventManager.current.OnCupCoffeeAddedTrigger();
+
+        } else if (other.CompareTag(TagConst.fourPiramid))
+        {
+            SwitchCup(gameObject, false);
+            _dieParticle.Play();
+            //TODO: Event to update score
         }
     }
     #endregion
@@ -104,5 +115,12 @@ public class CupController : MonoBehaviour
                 HandControl.t);
             //transform.Translate(HandControl.horizontalSpeedModifier * Time.deltaTime * Vector3.right, Space.World);
         }  
+    }
+
+    private void SwitchCup(GameObject cup, bool isActive)
+    {
+        cup.GetComponent<CapsuleCollider>().enabled = isActive;
+        _coffeeLiquide.SetActive(false);
+        _cupHat.SetActive(false);
     }
 }
